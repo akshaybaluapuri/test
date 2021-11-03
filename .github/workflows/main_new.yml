@@ -22,10 +22,12 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }} 
           known_hosts: "TestingCD"
+          
+      - name: Adding Known Hosts
         run: sudo ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
         
       - name: making changes to the file index.html file
+        uses: action/checkout@v2
         run: |
           ssh nxautomation@20.83.96.76
           sudo echo "Hello TestingCD" > /tmp/CD/index.html
-
