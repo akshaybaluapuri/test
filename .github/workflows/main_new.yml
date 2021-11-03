@@ -27,7 +27,7 @@ jobs:
         run: sudo ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
         
       - name: checkout action
-        uses: action/checkout@master
+        uses: actions/checkout@v2
         
       - name: making changes in index.html
         run: |
