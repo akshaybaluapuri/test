@@ -22,7 +22,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        with
+        with:
           ssh-private-key: ${{ secrets.AZURE_PEM_FILE }}
         run: | 
           ssh -i ${{ secret.AZURE_PEM_FILE }} azureuser@20.83.96.76
