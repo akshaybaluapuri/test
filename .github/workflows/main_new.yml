@@ -32,4 +32,5 @@ jobs:
       - name: making changes in index.html
         run: |
           ssh nxautomation@20.83.96.76
-          echo "Hello TestingCD" > /tmp/CD/index.html
+          cd /tmp/CD
+          echo "Hello TestingCD" > index.html
