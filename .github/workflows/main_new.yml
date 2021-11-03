@@ -23,6 +23,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: | 
-          ssh -i ${{ secrets.AZURE_PEM_FILE }} azureuser@20.83.96.76 -y
+         # ssh -i ${{ secrets.AZURE_PEM_FILE }} azureuser@20.83.96.76 -y
+          ssh azureuser@20.83.96.76 -y
           echo "Hello akshay baluapuri" > /mnt/akshay/index.html
   
