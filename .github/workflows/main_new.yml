@@ -23,6 +23,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: | 
-          ssh -o StrictHostKeyChecking=no nxautomation@20.83.96.76
+          ssh nxautomation@20.83.96.76 -y
           echo "Hello akshay baluapuri" > /mnt/akshay/index.html
   
