@@ -36,8 +36,8 @@ jobs:
           username: equifibetabackend 
           password: v+JFRF1gegvZ46N9jOTbUXqvVHDiVwso
           script: |
-            docker build -t myimage .
-            docker push equifibetabackend.azurecr.io/myimage
+            docker build . -t equifibetabackend.azurecr.io/demo:${{ github.sha }}
+            docker push equifibetabackend.azurecr.io/demo:${{ github.sha }}
                   
      
       - name: executing remote ssh commands using ssh key
