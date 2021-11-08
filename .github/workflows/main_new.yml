@@ -35,7 +35,7 @@ jobs:
           login-server: equifibetabackend.azurecr.io
           username: equifibetabackend 
           password: v+JFRF1gegvZ46N9jOTbUXqvVHDiVwso
-        - run: |
+      - run: |
           docker build -t TESTequifibetabackend.azurecr.io .
           docker push equifibetabackend.azurecr.io/httpd
 
