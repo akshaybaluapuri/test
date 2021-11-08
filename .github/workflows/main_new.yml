@@ -37,7 +37,8 @@ jobs:
           password: v+JFRF1gegvZ46N9jOTbUXqvVHDiVwso
       - run: |
           docker build -t myimage .
-          
+          docker push equifibetabackend.azurecr.io/httpd
+                  
      
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
