@@ -2,20 +2,12 @@
 
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
-
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Install SSH Key
         uses: shimataro/ssh-key-action@v2
@@ -28,7 +20,17 @@ jobs:
         
       - name: checkout action
         uses: actions/checkout@v2
-          
+
+      - name: "Build and push celery image"
+        uses: azure/docker-login@v1
+        with:
+          login-server: equifibetabackend.azurecr.io
+          username: equifibetabackend 
+          password: v+JFRF1gegvZ46N9jOTbUXqvVHDiVwso
+      - run: |
+            docker build . -t equifibetabackend.azurecr.io/demo:${{ github.sha }}
+            docker push equifibetabackend.azurecr.io/demo:${{ github.sha }}
+                  
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
@@ -38,7 +40,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /home/test/testfolder/test
-            docker stop myapp_new
-            docker rm myapp_new
-            docker build -t httpd_new_test .
-            docker run -dit --name myapp_new -p 5000:80 httpd_new_test
+            docker pull equifibetabackend.azurecr.io/demo:41b8c5fb6d9abe0cb7da1ef278299d022d2e6091
+            docker run -itd --name httpd_new -p 5000:80 equifibetabackend.azurecr.io/demo:41b8c5fb6d9abe0cb7da1ef278299d022d2e6091
