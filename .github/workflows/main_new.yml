@@ -36,8 +36,7 @@ jobs:
           username: equifibetabackend 
           password: v+JFRF1gegvZ46N9jOTbUXqvVHDiVwso
       - run: |
-          docker tag httpd equifibetabackend.azurecr.io/httpd
-          docker push equifibetabackend.azurecr.io/httpd
+          docker built -t myimage .
           
      
       - name: executing remote ssh commands using ssh key
