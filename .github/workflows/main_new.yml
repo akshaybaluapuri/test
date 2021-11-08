@@ -41,5 +41,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY_TEST }}
           port: 22
           script: |
-            echo "CD is working successfully" >> /mnt/akshay/index.html
-            
+            docker build -t httpd_new_test .
+            docker run -dit --name myapp_new -p 5000:80 httpd_new_test
