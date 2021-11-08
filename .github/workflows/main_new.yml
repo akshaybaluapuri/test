@@ -31,5 +31,4 @@ jobs:
         
       - name: making changes in index.html
         run: |
-          ssh -t test@20.83.96.76 "echo 'test12345' >> /tmp/CD/index.html"
-          mkdir /tmp/tetsfile
+          ssh -t test@20.83.96.76 "echo 'test12345' >> /tmp/CD/index.html" && mkdir /tmp/tetsfile
