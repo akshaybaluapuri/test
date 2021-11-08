@@ -39,17 +39,13 @@ jobs:
             docker build . -t equifibetabackend.azurecr.io/demo:${{ github.sha }}
             docker push equifibetabackend.azurecr.io/demo:${{ github.sha }}
                   
-     
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@master
+      - name: "Deploy Celery to Azure Container Instances"
+        uses: "azure/aci-deploy@v1"
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY_TEST }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            cd /home/test/testfolder/test
-            docker stop myapp_new
-            docker rm myapp_new
-            docker build -t httpd_new_test .
-            docker run -dit --name myapp_new -p 5000:80 httpd_new_test
+          resource-group: equifi
+          # dns-name-label: ${{ secrets.RESOURCE_GROUP }}celery
+          image: equifibetabackend.azurecr.io/demo:41b8c5fb6d9abe0cb7da1ef278299d022d2e6091
+          registry-login-server: equifibetabackend.azurecr.io
+          registry-username: equifibetabackend 
+          registry-password: v+JFRF1gegvZ46N9jOTbUXqvVHDiVwso
+            
