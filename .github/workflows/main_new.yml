@@ -40,5 +40,5 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd /home/test/testfolder/test
-            docker pull equifibetabackend.azurecr.io/demo:41b8c5fb6d9abe0cb7da1ef278299d022d2e6091
-            docker run -itd --name httpd_new -p 5000:80 equifibetabackend.azurecr.io/demo:41b8c5fb6d9abe0cb7da1ef278299d022d2e6091
+            docker pull equifibetabackend.azurecr.io/demo:${{ github.sha }} 
+            docker run -itd --name httpd_new -p 5000:80 equifibetabackend.azurecr.io/demo:${{ github.sha }}
