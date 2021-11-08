@@ -29,6 +29,15 @@ jobs:
       - name: checkout action
         uses: actions/checkout@v2
         
+      - name: Install SSH Key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_PRIVATE_KEY_DEQ }} 
+          known_hosts: "TestingCD_onLocal"
+          
+      - name: Adding Known Hosts
+        run: sudo ssh-keyscan -H 183.182.86.138 >> ~/.ssh/known_hosts
+          
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
