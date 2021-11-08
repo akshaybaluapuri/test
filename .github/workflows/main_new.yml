@@ -28,7 +28,17 @@ jobs:
         
       - name: checkout action
         uses: actions/checkout@v2
-        
+
+      - name: "Build and push celery image"
+        uses: azure/docker-login@v1
+        with:
+          login-server: equifibetabackend.azurecr.io
+          username: equifibetabackend 
+          password: v+JFRF1gegvZ46N9jOTbUXqvVHDiVwso
+        - run: |
+          docker build -t TESTequifibetabackend.azurecr.io .
+          docker push equifibetabackend.azurecr.io/httpd
+
      
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
