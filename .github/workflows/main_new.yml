@@ -28,6 +28,8 @@ jobs:
           username: equifibetabackend 
           password: v+JFRF1gegvZ46N9jOTbUXqvVHDiVwso
       - run: |
+            docker stop httpd_new
+            docker rm httpd_new
             docker build . -t equifibetabackend.azurecr.io/demo:${{ github.sha }}
             docker push equifibetabackend.azurecr.io/demo:${{ github.sha }}
                   
