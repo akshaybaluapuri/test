@@ -32,5 +32,4 @@ jobs:
       - name: making changes in index.html
         run: |
           ssh -tt nxautomation@20.83.96.76 -y
-          cd /tmp/CD
-          sudo echo "Hello TestingCD" > index.html
+          sudo echo "testingfile" >> /tmp/CD/index.html
