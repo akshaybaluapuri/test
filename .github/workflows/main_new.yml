@@ -43,3 +43,4 @@ jobs:
           script: |
             whoami
             ls -al
+            sudo docker ps -a
