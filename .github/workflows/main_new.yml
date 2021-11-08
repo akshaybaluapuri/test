@@ -28,10 +28,6 @@ jobs:
         
       - name: checkout action
         uses: actions/checkout@v2
-        
-      - name: making changes in index.html
-        run: |
-          ssh -t test@20.114.17.77 "echo 'testfilesettingup' >> /tmp/CD/index.html"
           
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
