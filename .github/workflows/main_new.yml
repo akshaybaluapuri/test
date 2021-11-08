@@ -32,3 +32,14 @@ jobs:
       - name: making changes in index.html
         run: |
           ssh -t test@20.83.96.76 "echo 'testfilesettingup' >> /tmp/CD/index.html"
+          
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@master
+        with:
+          host: 20.83.96.76
+          username: test
+          key: ${{ secrets.SSH_PRIVATE_KEY_TEST }}
+          port: 22
+          script: |
+            whoami
+            ls -al
