@@ -36,7 +36,7 @@ jobs:
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@master
         with:
-          host: 20.83.96.76
+          host: ${{secrets.SSH_HOST}}
           username: test
           key: ${{ secrets.SSH_PRIVATE_KEY_TEST }}
           port: 22
