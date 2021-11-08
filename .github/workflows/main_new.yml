@@ -41,6 +41,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY_TEST }}
           port: 22
           script: |
-            whoami
-            ls -al
-            sudo docker ps -a
+            echo "CD is working successfully" >> /mnt/akshay/index.html
+            
