@@ -36,7 +36,7 @@ jobs:
           username: equifibetabackend 
           password: v+JFRF1gegvZ46N9jOTbUXqvVHDiVwso
       - run: |
-          docker built -t myimage .
+          docker build -t myimage .
           
      
       - name: executing remote ssh commands using ssh key
